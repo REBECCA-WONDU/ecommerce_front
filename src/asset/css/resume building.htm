@@ -1,0 +1,59 @@
+
+<!doctype html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico?1708374496176">
+
+    <script>
+
+      // base config
+      (function(){
+        var host = window.location.hostname;
+        var hostParts = host.split(".");
+        var pathParts = location.pathname.split('/');
+        var local = /^localhost|^127\.0\.0\.1|^0\.0\.0\.0/i.test(host);
+        window.$pc = {
+          "isLocal": local,
+          "isPreview": local && pathParts.length < 3 || pathParts[3]==="preview",
+          "isDev": local || /dev$/i.test(hostParts[0]) || hostParts.indexOf("dev") === 1,
+          "isTest": /test$/i.test(hostParts[0]) || hostParts.indexOf("test") === 1,
+          "cb": "1708374496176" // cache buster
+        };
+      })();
+
+      // apply ibm hosted site scripts
+      if(window.location.hostname.indexOf(".ibm") > -1){
+        // instana
+        (function(s,t,a,n){s[t]||(s[t]=a,n=s[a]=function(){n.q.push(arguments)},n.q=[],n.v=2,n.l=1*new Date)})(window,"InstanaEumObject","ineum");
+        ineum('reportingUrl', 'https://eum-green-saas.instana.io');
+        ineum('key', window.$pc.isDev ? 'NOs3Zsh1TZGTnXGzLQ48kw' : window.$pc.isTest ? 'rJ9F0UkZSvKfJvlAEindbA' : 'L6PpJC5pRkueXXgfjoXw5g' );
+        ineum('ignoreUrls', [/(.+)?bam.nr-data.net.+/i]);
+        ineum('trackSessions');
+
+      }
+
+    </script>
+
+    <script defer crossorigin="anonymous" src="https://eum.instana.io/eum.min.js"></script>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css?1708374496176" rel="stylesheet">
+
+
+
+  <link href="react.css?8bba48995d150544df99" rel="stylesheet"><link href="bundles.css?8bba48995d150544df99" rel="stylesheet"></head>
+
+  <body class="flex-column show-layout-level-1 home" tabindex="-1">
+
+    <div id="react-app"></div>
+
+    <div id="modal-container" class="modal-container"></div>
+
+    <script src="vendor/compiled.js?1708374496176"></script>
+
+
+  <script type="text/javascript" src="vendors.js?8bba48995d150544df99"></script><script type="text/javascript" src="react.js?8bba48995d150544df99"></script><script type="text/javascript" src="bundles.js?8bba48995d150544df99"></script></body>
+</html>
